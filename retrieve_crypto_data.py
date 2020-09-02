@@ -35,6 +35,9 @@ for i in coins:
 
 market_cap = []
 volume = []
+high = []
+low = []
+open = []
 timestamp = []
 name = []
 symbol = []
@@ -46,14 +49,20 @@ for data in historical_list:
     for j in quotes:
         market_cap.append(j['quote']['USD']['market_cap'])
         volume.append(j['quote']['USD']['volume'])
+        high.append(j['quote']['USD']['high'])
+        low.append(j['quote']['USD']['low'])
+        open.append(j['quote']['USD']['open'])
         timestamp.append(j['quote']['USD']['timestamp'])
         name.append(curr_name)
         symbol.append(curr_symbol)
         # slug.append(curr_slug)
 
-df = pd.DataFrame(columns=['marketcap', 'volume', 'timestamp', 'name', 'symbol'])
+df = pd.DataFrame(columns=['marketcap', 'volume', 'high', 'low', 'open', 'timestamp', 'name', 'symbol'])
 df['marketcap'] = market_cap
 df['volume'] = volume
+df['high'] = high
+df['low'] = low
+df['open'] = open
 df['timestamp'] = timestamp
 df['name'] = name
 df['symbol'] = symbol
